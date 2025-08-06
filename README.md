@@ -1,70 +1,45 @@
-# React + TypeScript + Vite
+# URL Shortening API Landing Page
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is part of a Frontend Mentor challenge and serves as a practical assessment of my HTML, CSS, and JavaScript skills. It uses the [Bitly API](https://dev.bitly.com/) to shorten long URLs and display them dynamically with copy-to-clipboard functionality.
 
-Currently, two official plugins are available:
+## 🚀 Live Demo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+👉 [Click here to view the live demo](https://your-live-site-url.netlify.app)
 
-## Expanding the ESLint configuration
+## ✨ Features
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- Shorten URLs using Bitly API
+- Copy shortened URLs to clipboard
+- Responsive design for mobile, tablet, and desktop
+- TailwindCSS for styling
+- Error handling for invalid URLs
+- Accessible markup and interactions
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 📦 Tech Stack
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+- HTML5
+- TailwindCSS (via CDN or Vite)
+- JavaScript (Vanilla or React, if used)
+- Bitly API
+- Git + GitHub for version control
+- Deployed via Netlify / Vercel / GitHub Pages
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 🧠 What I Learned
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+- How to integrate and fetch data from a third-party API
+- Using TailwindCSS utility classes for fast, responsive styling
+- DOM manipulation and event handling in JavaScript
+- Implementing accessibility and responsiveness
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 📚 Resources
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-# Project7
+- [React Documentation](https://react.dev/): Helped understand components and state (if using React)
+- [TailwindCSS Documentation](https://tailwindcss.com/docs): To help install but didnt 
+- [Bitly API Docs](https://dev.bitly.com/): For sending requests and getting shortened links
+
+## 🛠️ Getting Started
+
+1. Clone the repository:
+   ```bash
+   git clone 
+   cd url-shortener

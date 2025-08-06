@@ -1,6 +1,7 @@
 import React, { useState } from "react";
+import "./App.css"; // Make sure this contains your custom styles
+import bgImage from "./; // adjust the path if needed
 
-// Define type for shortened links
 type ShortLink = {
   original: string;
   short: string;
@@ -30,10 +31,9 @@ export default function UrlShortener() {
       }
 
       const data = await response.json();
-
       setLinks((prev) => [...prev, { original: input, short: data.link }]);
-      setInput(""); // clear input field
-      setError(""); // clear error message
+      setInput("");
+      setError("");
     } catch (err) {
       setError("There was an error shortening the URL");
       console.error(err);
@@ -41,35 +41,38 @@ export default function UrlShortener() {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="url"
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          placeholder="Enter URL to shorten"
-          required
-        />
-        <button type="submit">Shorten</button>
-      </form>
-
-      {error && <p style={{ color: "red" }}>{error}</p>}
-
-      <ul>
-        {links.map((link, index) => (
-          <li key={index}>
-            Original:{" "}
-            <a href={link.original} target="_blank" rel="noopener noreferrer">
-              {link.original}
-            </a>
-            <br />
-            Shortened:{" "}
-            <a href={link.short} target="_blank" rel="noopener noreferrer">
-              {link.short}
-            </a>
-          </li>
-        ))}
-      </ul>
+    <div className="url-shortener-container">
+      <div className="shortener-card">
+        <form onSubmit={handleSubmit} className="shortener-form">
+          <input
+            type="url"
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            placeholder="Enter a link to shorten"
+            required
+            className="url-input"
+          />
+          <button type="submit" className="shorten-button">
+            Shorten It!
+          </button>
+        </form>
+        {error && <p className="error-text">{error}</p>}
+        <ul className="shortened-list">
+          {links.map((link, index) => (
+            <li key={index} className="shortened-item">
+              <span className="original-link">{link.original}</span>
+              <a
+                className="short-link"
+                href={link.short}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {link.short}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }
