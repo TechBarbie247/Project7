@@ -1,7 +1,4 @@
 import React, { useState } from "react";
-import "./App.css"; // Make sure this contains your custom styles
-import bgImage from "./; // adjust the path if needed
-
 type ShortLink = {
   original: string;
   short: string;
@@ -31,9 +28,10 @@ export default function UrlShortener() {
       }
 
       const data = await response.json();
+
       setLinks((prev) => [...prev, { original: input, short: data.link }]);
-      setInput("");
-      setError("");
+      setInput(""); // clear input
+      setError(""); // clear error
     } catch (err) {
       setError("There was an error shortening the URL");
       console.error(err);
@@ -41,38 +39,41 @@ export default function UrlShortener() {
   };
 
   return (
-    <div className="url-shortener-container">
-      <div className="shortener-card">
+    <section className="shortener-section">
+      <div className="shortener-container">
         <form onSubmit={handleSubmit} className="shortener-form">
           <input
             type="url"
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            placeholder="Enter a link to shorten"
+            placeholder="Shorten a link here..."
             required
-            className="url-input"
+            className="shortener-input"
           />
-          <button type="submit" className="shorten-button">
+          <button type="submit" className="shortener-button">
             Shorten It!
           </button>
         </form>
-        {error && <p className="error-text">{error}</p>}
-        <ul className="shortened-list">
+
+        {error && <p className="shortener-error">{error}</p>}
+
+        <ul className="shortener-links">
           {links.map((link, index) => (
-            <li key={index} className="shortened-item">
+            <li key={index} className="shortener-link-item">
               <span className="original-link">{link.original}</span>
-              <a
-                className="short-link"
-                href={link.short}
-                target="_blank"
-                rel="noopener noreferrer"
+              <span className="short-link">{link.short}</span>
+              <button
+                className="copy-button"
+                onClick={() => {
+                  navigator.clipboard.writeText(link.short);
+                }}
               >
-                {link.short}
-              </a>
+                Copy
+              </button>
             </li>
           ))}
         </ul>
       </div>
-    </div>
+    </section>
   );
 }
